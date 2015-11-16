@@ -69,17 +69,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Tutorial\SDL Tutorial\01_hello_SDL\01_hello_SDL.cpp" />
-    <ClCompile Include="..\..\..\..\Tutorial\SDL Tutorial\02_getting_an_image_on_the_screen\02_getting_an_image_on_the_screen.cpp" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Tutorial\SDL Tutorial\02_getting_an_image_on_the_screen\hello_world.bmp" />
+    <None Include="SDL2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 3\x.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

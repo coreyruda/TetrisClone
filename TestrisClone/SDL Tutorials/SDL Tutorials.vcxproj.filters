@@ -21,25 +21,29 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Tutorial\SDL Tutorial\01_hello_SDL\01_hello_SDL.cpp">
-      <Filter>Source Files\SDL Tutorial 1</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Tutorial\SDL Tutorial\02_getting_an_image_on_the_screen\02_getting_an_image_on_the_screen.cpp">
-      <Filter>Source Files\SDL Tutorial 2</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="Resource.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp">
+      <Filter>Source Files\SDL Tutorial 1</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp">
+      <Filter>Source Files\SDL Tutorial 2</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="..\..\..\..\Tutorial\SDL Tutorial\02_getting_an_image_on_the_screen\hello_world.bmp">
+    <None Include="SDL2.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 3\x.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
