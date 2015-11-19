@@ -35,6 +35,12 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 4\04_key_presses.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -44,6 +50,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Resources\Images\SDL Tutorial 3\x.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 4\down.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 4\left.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 4\press.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 4\right.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 4\up.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 5\stretch.bmp">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

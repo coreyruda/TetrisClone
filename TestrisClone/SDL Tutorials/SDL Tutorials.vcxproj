@@ -75,6 +75,8 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 4\04_key_presses.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
@@ -82,6 +84,12 @@
   <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 3\x.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 4\down.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 4\left.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 4\press.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 4\right.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 4\up.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 5\stretch.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
