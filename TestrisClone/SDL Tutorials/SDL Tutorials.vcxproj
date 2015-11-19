@@ -58,6 +58,10 @@
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ProjectDir)SDL dlls\SDL2\*.dll" "$(OutputPath)" /Y
+xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -72,8 +76,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy $(ProjectDir)\SDL dlls\SDL2\*.dll $(OutputPath)
+xcopy $(ProjectDir)\SDL dlls\SDL2_image\*.dll $(OutputPath)</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="resource.h" />
@@ -87,15 +95,6 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="libjpeg-9.dll" />
-    <None Include="libpng16-16.dll" />
-    <None Include="libtiff-5.dll" />
-    <None Include="libwebp-4.dll" />
-    <None Include="SDL2.dll" />
-    <None Include="SDL2_image.dll" />
-    <None Include="zlib1.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 3\x.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 4\down.bmp" />
@@ -107,7 +106,27 @@
     <Image Include="Resources\Images\SDL Tutorial 6\loaded.png" />
   </ItemGroup>
   <ItemGroup>
-    <Library Include="SDL2_image.lib" />
+    <None Include="SDL dlls\SDL2\SDL2.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\libjpeg-9.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\libpng16-16.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\libtiff-5.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\libwebp-4.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\SDL2_image.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="SDL dlls\SDL2_image\zlib1.dll">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

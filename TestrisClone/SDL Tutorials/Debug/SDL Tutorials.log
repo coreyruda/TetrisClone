@@ -1,26 +1,22 @@
-﻿Build started 11/18/2015 9:50:36 PM.
-     1>Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" on node 3 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp" "C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" "C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" "C++ Source Files\SDL Tutorial 4\04_key_presses.cpp" "C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp" "C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp"
-         06_extension_libraries_and_loading_other_image_formats.cpp
-         05_optimized_surface_loading_and_soft_stretching.cpp
-         04_key_presses.cpp
-         03_event_driven_programming.cpp
-         02_getting_an_image_on_the_screen.cpp
-         01_hello_SDL.cpp
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Development\C++\TetrisClone\TestrisClone\Debug\SDL Tutorials.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Development\C++\TetrisClone\TestrisClone\Debug\SDL Tutorials.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Development\C++\TetrisClone\TestrisClone\Debug\SDL Tutorials.lib" /MACHINE:X86 Debug\01_hello_SDL.obj
-         Debug\02_getting_an_image_on_the_screen.obj
-         Debug\03_event_driven_programming.obj
-         Debug\04_key_presses.obj
-         Debug\05_optimized_surface_loading_and_soft_stretching.obj
-         Debug\06_extension_libraries_and_loading_other_image_formats.obj
-         SDL2_image.lib
-     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
+﻿Build started 11/19/2015 12:08:43 AM.
+     1>Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" on node 2 (Build target(s)).
+     1>Link:
          SDL Tutorials.vcxproj -> C:\Development\C++\TetrisClone\TestrisClone\Debug\SDL Tutorials.exe
+       PostBuildEvent:
+         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Debug\" /Y
+         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Debug\" /Y
+         :VCEnd
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\SDL2.dll
+         1 File(s) copied
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libjpeg-9.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libpng16-16.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libtiff-5.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libwebp-4.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\SDL2_image.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\zlib1.dll
+         6 File(s) copied
      1>Done Building Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.84
+Time Elapsed 00:00:00.13

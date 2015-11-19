@@ -46,15 +46,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="SDL2.dll" />
-    <None Include="SDL2_image.dll" />
-    <None Include="zlib1.dll" />
-    <None Include="libjpeg-9.dll" />
-    <None Include="libpng16-16.dll" />
-    <None Include="libtiff-5.dll" />
-    <None Include="libwebp-4.dll" />
-  </ItemGroup>
-  <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
       <Filter>Resource Files</Filter>
     </Image>
@@ -84,6 +75,12 @@
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <Library Include="SDL2_image.lib" />
+    <None Include="SDL dlls\SDL2\SDL2.dll" />
+    <None Include="SDL dlls\SDL2_image\libjpeg-9.dll" />
+    <None Include="SDL dlls\SDL2_image\libpng16-16.dll" />
+    <None Include="SDL dlls\SDL2_image\libtiff-5.dll" />
+    <None Include="SDL dlls\SDL2_image\libwebp-4.dll" />
+    <None Include="SDL dlls\SDL2_image\SDL2_image.dll" />
+    <None Include="SDL dlls\SDL2_image\zlib1.dll" />
   </ItemGroup>
 </Project>
