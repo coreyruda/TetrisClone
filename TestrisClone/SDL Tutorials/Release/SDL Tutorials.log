@@ -1,26 +1,22 @@
-﻿Build started 11/18/2015 9:38:42 PM.
+﻿Build started 11/19/2015 12:12:57 AM.
      1>Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _MBCS /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt "C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp" "C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" "C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" "C++ Source Files\SDL Tutorial 4\04_key_presses.cpp" "C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp" "C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp"
-         01_hello_SDL.cpp
-         02_getting_an_image_on_the_screen.cpp
-         03_event_driven_programming.cpp
-         04_key_presses.cpp
-         05_optimized_surface_loading_and_soft_stretching.cpp
-         06_extension_libraries_and_loading_other_image_formats.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Development\C++\TetrisClone\TestrisClone\Release\SDL Tutorials.exe" /INCREMENTAL /NOLOGO SDL2.lib SDL2main.lib SDL2_image.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Development\C++\TetrisClone\TestrisClone\Release\SDL Tutorials.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Development\C++\TetrisClone\TestrisClone\Release\SDL Tutorials.lib" /MACHINE:X86 /SAFESEH Release\01_hello_SDL.obj
-         Release\02_getting_an_image_on_the_screen.obj
-         Release\03_event_driven_programming.obj
-         Release\04_key_presses.obj
-         Release\05_optimized_surface_loading_and_soft_stretching.obj
-         Release\06_extension_libraries_and_loading_other_image_formats.obj
-     1>LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification
-         Generating code
-         Finished generating code
+     1>Link:
          SDL Tutorials.vcxproj -> C:\Development\C++\TetrisClone\TestrisClone\Release\SDL Tutorials.exe
+       PostBuildEvent:
+         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Release\" /Y
+         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Release\" /Y
+         :VCEnd
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\SDL2.dll
+         1 File(s) copied
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libjpeg-9.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libpng16-16.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libtiff-5.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libwebp-4.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\SDL2_image.dll
+         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\zlib1.dll
+         6 File(s) copied
      1>Done Building Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.43
+Time Elapsed 00:00:00.11

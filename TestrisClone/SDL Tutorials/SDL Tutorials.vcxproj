@@ -79,8 +79,8 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
-      <Command>xcopy $(ProjectDir)\SDL dlls\SDL2\*.dll $(OutputPath)
-xcopy $(ProjectDir)\SDL dlls\SDL2_image\*.dll $(OutputPath)</Command>
+      <Command>xcopy "$(ProjectDir)SDL dlls\SDL2\*.dll" "$(OutputPath)" /Y
+xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
