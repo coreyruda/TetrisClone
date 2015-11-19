@@ -41,9 +41,18 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL2.dll" />
+    <None Include="SDL2_image.dll" />
+    <None Include="zlib1.dll" />
+    <None Include="libjpeg-9.dll" />
+    <None Include="libpng16-16.dll" />
+    <None Include="libtiff-5.dll" />
+    <None Include="libwebp-4.dll" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
@@ -70,5 +79,11 @@
     <Image Include="Resources\Images\SDL Tutorial 5\stretch.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Images\SDL Tutorial 6\loaded.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="SDL2_image.lib" />
   </ItemGroup>
 </Project>
