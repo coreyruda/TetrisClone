@@ -1,22 +1,5 @@
-﻿Build started 11/19/2015 12:12:57 AM.
-     1>Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" on node 2 (Build target(s)).
-     1>Link:
-         SDL Tutorials.vcxproj -> C:\Development\C++\TetrisClone\TestrisClone\Release\SDL Tutorials.exe
-       PostBuildEvent:
-         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Release\" /Y
-         xcopy "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\*.dll" "C:\Development\C++\TetrisClone\TestrisClone\Release\" /Y
-         :VCEnd
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2\SDL2.dll
-         1 File(s) copied
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libjpeg-9.dll
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libpng16-16.dll
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libtiff-5.dll
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\libwebp-4.dll
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\SDL2_image.dll
-         C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL dlls\SDL2_image\zlib1.dll
-         6 File(s) copied
-     1>Done Building Project "C:\Development\C++\TetrisClone\TestrisClone\SDL Tutorials\SDL Tutorials.vcxproj" (Build target(s)).
+﻿Build started 4/21/2016 12:42:24 AM.
 
 Build succeeded.
 
-Time Elapsed 00:00:00.11
+Time Elapsed 00:00:00.13
