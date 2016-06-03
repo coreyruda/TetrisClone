@@ -43,8 +43,8 @@
     <LibraryPath>C:\Development\C++\TetrisClone\Libs\SDL2 Image\lib\x86;C:\Development\C++\TetrisClone\Libs\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>C:\Development\C++\TetrisClone\Libs\SDL2 Image\include;C:\Development\C++\TetrisClone\Libs\SDL2-2.0.3\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Development\C++\TetrisClone\Libs\SDL2 Image\lib\x86;C:\Development\C++\TetrisClone\Libs\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Development\C++\TetrisClone\Libs\SDL2 Image\include;C:\Development\C++\TetrisClone\Libs\SDL2-2.0.3\include;C:\Development\C++\TetrisClone\Libs\SDL2 TTF\SDL2_ttf-2.0.14\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Development\C++\TetrisClone\Libs\SDL2 TTF\SDL2_ttf-2.0.14\lib\x86;C:\Development\C++\TetrisClone\Libs\SDL2 Image\lib\x86;C:\Development\C++\TetrisClone\Libs\SDL2-2.0.3\lib\x86;$(LibraryPath)</LibraryPath>
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -75,7 +75,7 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
     <PostBuildEvent>
@@ -87,14 +87,32 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 10\10_color_keying.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 11\11_clip_rendering_and_sprite_sheets.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 12\12_color_modulation.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 13\13_alpha_blending.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 14\14_animated_sprites_and_vsync.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 15\15_rotation_and_flipping.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 16\16_true_type_fonts.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 1\01_hello_SDL.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 4\04_key_presses.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 7\07_texture_loading_and_rendering.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 8\08_geometry_rendering.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 9\09_the_viewport.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\Images\SDL Tutorial 10\background.png" />
+    <Image Include="Resources\Images\SDL Tutorial 10\foo.png" />
+    <Image Include="Resources\Images\SDL Tutorial 11\dots.png" />
+    <Image Include="Resources\Images\SDL Tutorial 12\colors.png" />
+    <Image Include="Resources\Images\SDL Tutorial 13\fadein.png" />
+    <Image Include="Resources\Images\SDL Tutorial 13\fadeout.png" />
+    <Image Include="Resources\Images\SDL Tutorial 14\foo.png" />
+    <Image Include="Resources\Images\SDL Tutorial 15\arrow.png" />
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 3\x.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 4\down.bmp" />
@@ -104,6 +122,8 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <Image Include="Resources\Images\SDL Tutorial 4\up.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 5\stretch.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 6\loaded.png" />
+    <Image Include="Resources\Images\SDL Tutorial 7\texture.png" />
+    <Image Include="Resources\Images\SDL Tutorial 9\viewport.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL dlls\SDL2\SDL2.dll">
@@ -127,6 +147,18 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <None Include="SDL dlls\SDL2_image\zlib1.dll">
       <DeploymentContent>true</DeploymentContent>
     </None>
+    <None Include="SDL dlls\SDL2_ttf\libfreetype-6.dll">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </None>
+    <None Include="SDL dlls\SDL2_ttf\SDL2_ttf.dll">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </None>
+    <None Include="SDL dlls\SDL2_ttf\zlib1.dll">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Types\SDL Tutorial 16\lazy.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

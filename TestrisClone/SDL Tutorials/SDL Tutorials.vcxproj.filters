@@ -44,6 +44,36 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 6\06_extension_libraries_and_loading_other_image_formats.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 7\07_texture_loading_and_rendering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 8\08_geometry_rendering.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 9\09_the_viewport.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 10\10_color_keying.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 11\11_clip_rendering_and_sprite_sheets.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 12\12_color_modulation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 13\13_alpha_blending.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 14\14_animated_sprites_and_vsync.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 15\15_rotation_and_flipping.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 16\16_true_type_fonts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
@@ -73,6 +103,36 @@
     <Image Include="Resources\Images\SDL Tutorial 6\loaded.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Images\SDL Tutorial 7\texture.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 9\viewport.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 10\background.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 10\foo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 11\dots.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 12\colors.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 13\fadein.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 13\fadeout.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 14\foo.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 15\arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL dlls\SDL2\SDL2.dll" />
@@ -82,5 +142,11 @@
     <None Include="SDL dlls\SDL2_image\libwebp-4.dll" />
     <None Include="SDL dlls\SDL2_image\SDL2_image.dll" />
     <None Include="SDL dlls\SDL2_image\zlib1.dll" />
+    <None Include="SDL dlls\SDL2_ttf\libfreetype-6.dll" />
+    <None Include="SDL dlls\SDL2_ttf\SDL2_ttf.dll" />
+    <None Include="SDL dlls\SDL2_ttf\zlib1.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Resources\Types\SDL Tutorial 16\lazy.ttf" />
   </ItemGroup>
 </Project>
