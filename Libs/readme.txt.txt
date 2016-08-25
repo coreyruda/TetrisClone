@@ -1,0 +1,1 @@
+Download the latest version of SDL2 Libraries at : https://buildbot.libsdl.org/sdl-builds/sdl-visualstudio/. Doing so will make sure that you have the latest version of SDL2 for the Visual Studio compilers.
