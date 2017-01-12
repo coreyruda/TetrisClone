@@ -1,13 +1,11 @@
 ///*This source code copyrighted by Lazy Foo' Productions (2004-2015)
 //and may not be redistributed without written permission.*/
 //
-////Using SDL, SDL_image, SDL_ttf, standard IO, math, and strings
+////Using SDL, SDL_image, standard IO, and strings
 //#include <SDL.h>
 //#include <SDL_image.h>
-//#include <SDL_ttf.h>
 //#include <stdio.h>
 //#include <string>
-//#include <cmath>
 //
 ////Screen dimension constants
 //const int SCREEN_WIDTH = 640;
@@ -26,8 +24,10 @@
 //		//Loads image at specified path
 //		bool loadFromFile( std::string path );
 //		
+//		#ifdef _SDL_TTF_H
 //		//Creates image from font string
 //		bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
+//		#endif
 //
 //		//Deallocates texture
 //		void free();
@@ -57,6 +57,40 @@
 //		int mHeight;
 //};
 //
+////The dot that will move around on the screen
+//class Dot
+//{
+//    public:
+//		//The dimensions of the dot
+//		static const int DOT_WIDTH = 20;
+//		static const int DOT_HEIGHT = 20;
+//
+//		//Maximum axis velocity of the dot
+//		static const int DOT_VEL = 10;
+//
+//		//Initializes the variables
+//		Dot();
+//
+//		//Takes key presses and adjusts the dot's velocity
+//		void handleEvent( SDL_Event& e );
+//
+//		//Moves the dot and checks collision
+//		void move( SDL_Rect& wall );
+//
+//		//Shows the dot on the screen
+//		void render();
+//
+//    private:
+//		//The X and Y offsets of the dot
+//		int mPosX, mPosY;
+//
+//		//The velocity of the dot
+//		int mVelX, mVelY;
+//		
+//		//Dot's collision box
+//		SDL_Rect mCollider;
+//};
+//
 ////Starts up SDL and creates window
 //bool init();
 //
@@ -66,18 +100,17 @@
 ////Frees media and shuts down SDL
 //void close();
 //
+////Box collision detector
+//bool checkCollision( SDL_Rect a, SDL_Rect b );
+//
 ////The window we'll be rendering to
 //SDL_Window* gWindow = NULL;
 //
 ////The window renderer
 //SDL_Renderer* gRenderer = NULL;
 //
-////Globally used font
-//TTF_Font *gFont = NULL;
-//
-////Rendered texture
-//LTexture gTextTexture;
-//
+////Scene textures
+//LTexture gDotTexture;
 //
 //LTexture::LTexture()
 //{
@@ -134,6 +167,7 @@
 //	return mTexture != NULL;
 //}
 //
+//#ifdef _SDL_TTF_H
 //bool LTexture::loadFromRenderedText( std::string textureText, SDL_Color textColor )
 //{
 //	//Get rid of preexisting texture
@@ -141,11 +175,7 @@
 //
 //	//Render text surface
 //	SDL_Surface* textSurface = TTF_RenderText_Solid( gFont, textureText.c_str(), textColor );
-//	if( textSurface == NULL )
-//	{
-//		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
-//	}
-//	else
+//	if( textSurface != NULL )
 //	{
 //		//Create texture from surface pixels
 //        mTexture = SDL_CreateTextureFromSurface( gRenderer, textSurface );
@@ -163,10 +193,16 @@
 //		//Get rid of old surface
 //		SDL_FreeSurface( textSurface );
 //	}
+//	else
+//	{
+//		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+//	}
+//
 //	
 //	//Return success
 //	return mTexture != NULL;
 //}
+//#endif
 //
 //void LTexture::free()
 //{
@@ -224,6 +260,82 @@
 //	return mHeight;
 //}
 //
+//Dot::Dot()
+//{
+//    //Initialize the offsets
+//    mPosX = 0;
+//    mPosY = 0;
+//
+//	//Set collision box dimension
+//	mCollider.w = DOT_WIDTH;
+//	mCollider.h = DOT_HEIGHT;
+//
+//    //Initialize the velocity
+//    mVelX = 0;
+//    mVelY = 0;
+//}
+//
+//void Dot::handleEvent( SDL_Event& e )
+//{
+//    //If a key was pressed
+//	if( e.type == SDL_KEYDOWN && e.key.repeat == 0 )
+//    {
+//        //Adjust the velocity
+//        switch( e.key.keysym.sym )
+//        {
+//            case SDLK_UP: mVelY -= DOT_VEL; break;
+//            case SDLK_DOWN: mVelY += DOT_VEL; break;
+//            case SDLK_LEFT: mVelX -= DOT_VEL; break;
+//            case SDLK_RIGHT: mVelX += DOT_VEL; break;
+//        }
+//    }
+//    //If a key was released
+//    else if( e.type == SDL_KEYUP && e.key.repeat == 0 )
+//    {
+//        //Adjust the velocity
+//        switch( e.key.keysym.sym )
+//        {
+//            case SDLK_UP: mVelY += DOT_VEL; break;
+//            case SDLK_DOWN: mVelY -= DOT_VEL; break;
+//            case SDLK_LEFT: mVelX += DOT_VEL; break;
+//            case SDLK_RIGHT: mVelX -= DOT_VEL; break;
+//        }
+//    }
+//}
+//
+//void Dot::move( SDL_Rect& wall )
+//{
+//    //Move the dot left or right
+//    mPosX += mVelX;
+//	mCollider.x = mPosX;
+//
+//    //If the dot collided or went too far to the left or right
+//    if( ( mPosX < 0 ) || ( mPosX + DOT_WIDTH > SCREEN_WIDTH ) || checkCollision( mCollider, wall ) )
+//    {
+//        //Move back
+//        mPosX -= mVelX;
+//		mCollider.x = mPosX;
+//    }
+//
+//    //Move the dot up or down
+//    mPosY += mVelY;
+//	mCollider.y = mPosY;
+//
+//    //If the dot collided or went too far up or down
+//    if( ( mPosY < 0 ) || ( mPosY + DOT_HEIGHT > SCREEN_HEIGHT ) || checkCollision( mCollider, wall ) )
+//    {
+//        //Move back
+//        mPosY -= mVelY;
+//		mCollider.y = mPosY;
+//    }
+//}
+//
+//void Dot::render()
+//{
+//    //Show the dot
+//	gDotTexture.render( mPosX, mPosY );
+//}
+//
 //bool init()
 //{
 //	//Initialization flag
@@ -271,13 +383,6 @@
 //					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 //					success = false;
 //				}
-//
-//				 //Initialize SDL_ttf
-//				if( TTF_Init() == -1 )
-//				{
-//					printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
-//					success = false;
-//				}
 //			}
 //		}
 //	}
@@ -290,22 +395,11 @@
 //	//Loading success flag
 //	bool success = true;
 //
-//	//Open the font
-//	gFont = TTF_OpenFont( "Resources/Types/SDL Tutorial 16/lazy.ttf", 28 );
-//	if( gFont == NULL )
+//	//Load press texture
+//	if( !gDotTexture.loadFromFile( "Resources/Images/SDL Tutorial 27/dot.bmp" ) )
 //	{
-//		printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );
+//		printf( "Failed to load dot texture!\n" );
 //		success = false;
-//	}
-//	else
-//	{
-//		//Render text
-//		SDL_Color textColor = { 0, 0, 0 };
-//		if( !gTextTexture.loadFromRenderedText( "The quick brown fox jumps over the lazy dog", textColor ) )
-//		{
-//			printf( "Failed to render text texture!\n" );
-//			success = false;
-//		}
 //	}
 //
 //	return success;
@@ -314,11 +408,7 @@
 //void close()
 //{
 //	//Free loaded images
-//	gTextTexture.free();
-//
-//	//Free global font
-//	TTF_CloseFont( gFont );
-//	gFont = NULL;
+//	gDotTexture.free();
 //
 //	//Destroy window	
 //	SDL_DestroyRenderer( gRenderer );
@@ -327,9 +417,53 @@
 //	gRenderer = NULL;
 //
 //	//Quit SDL subsystems
-//	TTF_Quit();
 //	IMG_Quit();
 //	SDL_Quit();
+//}
+//
+//bool checkCollision( SDL_Rect a, SDL_Rect b )
+//{
+//    //The sides of the rectangles
+//    int leftA, leftB;
+//    int rightA, rightB;
+//    int topA, topB;
+//    int bottomA, bottomB;
+//
+//    //Calculate the sides of rect A
+//    leftA = a.x;
+//    rightA = a.x + a.w;
+//    topA = a.y;
+//    bottomA = a.y + a.h;
+//
+//    //Calculate the sides of rect B
+//    leftB = b.x;
+//    rightB = b.x + b.w;
+//    topB = b.y;
+//    bottomB = b.y + b.h;
+//
+//    //If any of the sides from A are outside of B
+//    if( bottomA <= topB )
+//    {
+//        return false;
+//    }
+//
+//    if( topA >= bottomB )
+//    {
+//        return false;
+//    }
+//
+//    if( rightA <= leftB )
+//    {
+//        return false;
+//    }
+//
+//    if( leftA >= rightB )
+//    {
+//        return false;
+//    }
+//
+//    //If none of the sides from A are outside B
+//    return true;
 //}
 //
 //int main( int argc, char* args[] )
@@ -354,6 +488,16 @@
 //			//Event handler
 //			SDL_Event e;
 //
+//			//The dot that will be moving around on the screen
+//			Dot dot;
+//
+//			//Set the wall
+//			SDL_Rect wall;
+//			wall.x = 300;
+//			wall.y = 40;
+//			wall.w = 40;
+//			wall.h = 400;
+//			
 //			//While application is running
 //			while( !quit )
 //			{
@@ -365,14 +509,24 @@
 //					{
 //						quit = true;
 //					}
+//
+//					//Handle input for the dot
+//					dot.handleEvent( e );
 //				}
+//
+//				//Move the dot and check collision
+//				dot.move( wall );
 //
 //				//Clear screen
 //				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 //				SDL_RenderClear( gRenderer );
 //
-//				//Render current frame
-//				gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, ( SCREEN_HEIGHT - gTextTexture.getHeight() ) / 2 );
+//				//Render wall
+//				SDL_SetRenderDrawColor( gRenderer, 0x00, 0x00, 0x00, 0xFF );		
+//				SDL_RenderDrawRect( gRenderer, &wall );
+//				
+//				//Render dot
+//				dot.render();
 //
 //				//Update screen
 //				SDL_RenderPresent( gRenderer );

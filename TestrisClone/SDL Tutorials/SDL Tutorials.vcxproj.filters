@@ -74,6 +74,39 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 16\16_true_type_fonts.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 17\17_mouse_events.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 18\18_key_states.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 21\21_sound_effects_and_music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 22\22_timing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 23\23_advanced_timers.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 24\24_calculating_frame_rate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 25\25_capping_frame_rate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 26\26_motion.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 27\27_collision_detection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 28\28_per-pixel_collision_detection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 29\29_circular_collision_detection.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
@@ -133,6 +166,39 @@
     <Image Include="Resources\Images\SDL Tutorial 15\arrow.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Images\SDL Tutorial 17\button.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 18\down.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 18\left.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 18\press.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 18\right.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 18\up.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 21\prompt.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 26\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 27\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 28\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 29\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL dlls\SDL2\SDL2.dll" />
@@ -145,8 +211,29 @@
     <None Include="SDL dlls\SDL2_ttf\libfreetype-6.dll" />
     <None Include="SDL dlls\SDL2_ttf\SDL2_ttf.dll" />
     <None Include="SDL dlls\SDL2_ttf\zlib1.dll" />
+    <None Include="SDL dlls\SDL2_mixer\SDL2_mixer.dll" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Resources\Types\SDL Tutorial 16\lazy.ttf" />
+    <Font Include="Resources\Types\SDL Tutorial 22\lazy.ttf" />
+    <Font Include="Resources\Types\SDL Tutorial 23\lazy.ttf" />
+    <Font Include="Resources\Types\SDL Tutorial 24\lazy.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Resources\Sounds\SDL Tutorial 21\beat.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\SDL Tutorial 21\high.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\SDL Tutorial 21\low.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\SDL Tutorial 21\medium.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
+    <Media Include="Resources\Sounds\SDL Tutorial 21\scratch.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

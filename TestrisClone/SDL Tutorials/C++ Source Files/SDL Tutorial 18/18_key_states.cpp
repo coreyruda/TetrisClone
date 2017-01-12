@@ -1,13 +1,11 @@
 ///*This source code copyrighted by Lazy Foo' Productions (2004-2015)
 //and may not be redistributed without written permission.*/
 //
-////Using SDL, SDL_image, SDL_ttf, standard IO, math, and strings
+////Using SDL, SDL_image, standard IO, and strings
 //#include <SDL.h>
 //#include <SDL_image.h>
-//#include <SDL_ttf.h>
 //#include <stdio.h>
 //#include <string>
-//#include <cmath>
 //
 ////Screen dimension constants
 //const int SCREEN_WIDTH = 640;
@@ -26,9 +24,11 @@
 //		//Loads image at specified path
 //		bool loadFromFile( std::string path );
 //		
+//		#ifdef _SDL_TTF_H
 //		//Creates image from font string
 //		bool loadFromRenderedText( std::string textureText, SDL_Color textColor );
-//
+//		#endif
+//		
 //		//Deallocates texture
 //		void free();
 //
@@ -72,12 +72,12 @@
 ////The window renderer
 //SDL_Renderer* gRenderer = NULL;
 //
-////Globally used font
-//TTF_Font *gFont = NULL;
-//
-////Rendered texture
-//LTexture gTextTexture;
-//
+////Scene textures
+//LTexture gPressTexture;
+//LTexture gUpTexture;
+//LTexture gDownTexture;
+//LTexture gLeftTexture;
+//LTexture gRightTexture;
 //
 //LTexture::LTexture()
 //{
@@ -134,6 +134,7 @@
 //	return mTexture != NULL;
 //}
 //
+//#ifdef _SDL_TTF_H
 //bool LTexture::loadFromRenderedText( std::string textureText, SDL_Color textColor )
 //{
 //	//Get rid of preexisting texture
@@ -141,11 +142,7 @@
 //
 //	//Render text surface
 //	SDL_Surface* textSurface = TTF_RenderText_Solid( gFont, textureText.c_str(), textColor );
-//	if( textSurface == NULL )
-//	{
-//		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
-//	}
-//	else
+//	if( textSurface != NULL )
 //	{
 //		//Create texture from surface pixels
 //        mTexture = SDL_CreateTextureFromSurface( gRenderer, textSurface );
@@ -163,10 +160,16 @@
 //		//Get rid of old surface
 //		SDL_FreeSurface( textSurface );
 //	}
+//	else
+//	{
+//		printf( "Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError() );
+//	}
+//
 //	
 //	//Return success
 //	return mTexture != NULL;
 //}
+//#endif
 //
 //void LTexture::free()
 //{
@@ -271,13 +274,6 @@
 //					printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );
 //					success = false;
 //				}
-//
-//				 //Initialize SDL_ttf
-//				if( TTF_Init() == -1 )
-//				{
-//					printf( "SDL_ttf could not initialize! SDL_ttf Error: %s\n", TTF_GetError() );
-//					success = false;
-//				}
 //			}
 //		}
 //	}
@@ -290,22 +286,39 @@
 //	//Loading success flag
 //	bool success = true;
 //
-//	//Open the font
-//	gFont = TTF_OpenFont( "Resources/Types/SDL Tutorial 16/lazy.ttf", 28 );
-//	if( gFont == NULL )
+//	//Load press texture
+//	if( !gPressTexture.loadFromFile( "Resources/Images/SDL Tutorial 18/press.png" ) )
 //	{
-//		printf( "Failed to load lazy font! SDL_ttf Error: %s\n", TTF_GetError() );
+//		printf( "Failed to load press texture!\n" );
 //		success = false;
 //	}
-//	else
+//	
+//	//Load up texture
+//	if( !gUpTexture.loadFromFile( "Resources/Images/SDL Tutorial 18/up.png" ) )
 //	{
-//		//Render text
-//		SDL_Color textColor = { 0, 0, 0 };
-//		if( !gTextTexture.loadFromRenderedText( "The quick brown fox jumps over the lazy dog", textColor ) )
-//		{
-//			printf( "Failed to render text texture!\n" );
-//			success = false;
-//		}
+//		printf( "Failed to load up texture!\n" );
+//		success = false;
+//	}
+//
+//	//Load down texture
+//	if( !gDownTexture.loadFromFile( "Resources/Images/SDL Tutorial 18/down.png" ) )
+//	{
+//		printf( "Failed to load down texture!\n" );
+//		success = false;
+//	}
+//
+//	//Load left texture
+//	if( !gLeftTexture.loadFromFile( "Resources/Images/SDL Tutorial 18/left.png" ) )
+//	{
+//		printf( "Failed to load left texture!\n" );
+//		success = false;
+//	}
+//
+//	//Load right texture
+//	if( !gRightTexture.loadFromFile( "Resources/Images/SDL Tutorial 18/right.png" ) )
+//	{
+//		printf( "Failed to load right texture!\n" );
+//		success = false;
 //	}
 //
 //	return success;
@@ -314,11 +327,11 @@
 //void close()
 //{
 //	//Free loaded images
-//	gTextTexture.free();
-//
-//	//Free global font
-//	TTF_CloseFont( gFont );
-//	gFont = NULL;
+//	gPressTexture.free();
+//	gUpTexture.free();
+//	gDownTexture.free();
+//	gLeftTexture.free();
+//	gRightTexture.free();
 //
 //	//Destroy window	
 //	SDL_DestroyRenderer( gRenderer );
@@ -327,7 +340,6 @@
 //	gRenderer = NULL;
 //
 //	//Quit SDL subsystems
-//	TTF_Quit();
 //	IMG_Quit();
 //	SDL_Quit();
 //}
@@ -354,6 +366,9 @@
 //			//Event handler
 //			SDL_Event e;
 //
+//			//Current rendered texture
+//			LTexture* currentTexture = NULL;
+//
 //			//While application is running
 //			while( !quit )
 //			{
@@ -367,12 +382,35 @@
 //					}
 //				}
 //
+//				//Set texture based on current keystate
+//				const Uint8* currentKeyStates = SDL_GetKeyboardState( NULL );
+//				if( currentKeyStates[ SDL_SCANCODE_UP ] )
+//				{
+//					currentTexture = &gUpTexture;
+//				}
+//				else if( currentKeyStates[ SDL_SCANCODE_DOWN ] )
+//				{
+//					currentTexture = &gDownTexture;
+//				}
+//				else if( currentKeyStates[ SDL_SCANCODE_LEFT ] )
+//				{
+//					currentTexture = &gLeftTexture;
+//				}
+//				else if( currentKeyStates[ SDL_SCANCODE_RIGHT ] )
+//				{
+//					currentTexture = &gRightTexture;
+//				}
+//				else
+//				{
+//					currentTexture = &gPressTexture;
+//				}
+//
 //				//Clear screen
 //				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 //				SDL_RenderClear( gRenderer );
 //
-//				//Render current frame
-//				gTextTexture.render( ( SCREEN_WIDTH - gTextTexture.getWidth() ) / 2, ( SCREEN_HEIGHT - gTextTexture.getHeight() ) / 2 );
+//				//Render current texture
+//				currentTexture->render( 0, 0 );
 //
 //				//Update screen
 //				SDL_RenderPresent( gRenderer );
