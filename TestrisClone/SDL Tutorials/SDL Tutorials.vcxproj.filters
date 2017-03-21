@@ -107,6 +107,15 @@
     <ClCompile Include="C++ Source Files\SDL Tutorial 29\29_circular_collision_detection.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 30\30_scrolling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 31\31_scrolling_backgrounds.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C++ Source Files\SDL Tutorial 32\32_text_input_and_clipboard_handling.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp">
@@ -199,6 +208,18 @@
     <Image Include="Resources\Images\SDL Tutorial 29\dot.bmp">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\Images\SDL Tutorial 30\bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 30\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 31\bg.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\Images\SDL Tutorial 31\dot.bmp">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="SDL dlls\SDL2\SDL2.dll" />
@@ -218,6 +239,7 @@
     <Font Include="Resources\Types\SDL Tutorial 22\lazy.ttf" />
     <Font Include="Resources\Types\SDL Tutorial 23\lazy.ttf" />
     <Font Include="Resources\Types\SDL Tutorial 24\lazy.ttf" />
+    <Font Include="Resources\Types\SDL Tutorial 32\lazy.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\SDL Tutorial 21\beat.wav">

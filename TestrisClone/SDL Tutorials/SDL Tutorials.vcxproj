@@ -109,6 +109,9 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <ClCompile Include="C++ Source Files\SDL Tutorial 28\28_per-pixel_collision_detection.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 29\29_circular_collision_detection.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 2\02_getting_an_image_on_the_screen.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 30\30_scrolling.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 31\31_scrolling_backgrounds.cpp" />
+    <ClCompile Include="C++ Source Files\SDL Tutorial 32\32_text_input_and_clipboard_handling.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 3\03_event_driven_programming.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 4\04_key_presses.cpp" />
     <ClCompile Include="C++ Source Files\SDL Tutorial 5\05_optimized_surface_loading_and_soft_stretching.cpp" />
@@ -138,6 +141,10 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <Image Include="Resources\Images\SDL Tutorial 28\dot.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 29\dot.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 2\hello_world.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 30\bg.png" />
+    <Image Include="Resources\Images\SDL Tutorial 30\dot.bmp" />
+    <Image Include="Resources\Images\SDL Tutorial 31\bg.png" />
+    <Image Include="Resources\Images\SDL Tutorial 31\dot.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 3\x.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 4\down.bmp" />
     <Image Include="Resources\Images\SDL Tutorial 4\left.bmp" />
@@ -192,6 +199,7 @@ xcopy "$(ProjectDir)SDL dlls\SDL2_image\*.dll" "$(OutputPath)" /Y</Command>
     <Font Include="Resources\Types\SDL Tutorial 22\lazy.ttf" />
     <Font Include="Resources\Types\SDL Tutorial 23\lazy.ttf" />
     <Font Include="Resources\Types\SDL Tutorial 24\lazy.ttf" />
+    <Font Include="Resources\Types\SDL Tutorial 32\lazy.ttf" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="Resources\Sounds\SDL Tutorial 21\beat.wav" />

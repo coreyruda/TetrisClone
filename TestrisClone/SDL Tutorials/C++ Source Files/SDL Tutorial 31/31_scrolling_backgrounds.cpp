@@ -11,13 +11,6 @@
 //const int SCREEN_WIDTH = 640;
 //const int SCREEN_HEIGHT = 480;
 //
-////A circle stucture
-//struct Circle
-//{
-//	int x, y;
-//	int r;
-//};
-//
 ////Texture wrapper class
 //class LTexture
 //{
@@ -73,22 +66,19 @@
 //		static const int DOT_HEIGHT = 20;
 //
 //		//Maximum axis velocity of the dot
-//		static const int DOT_VEL = 1;
+//		static const int DOT_VEL = 10;
 //
 //		//Initializes the variables
-//		Dot( int x, int y );
+//		Dot();
 //
 //		//Takes key presses and adjusts the dot's velocity
 //		void handleEvent( SDL_Event& e );
 //
-//		//Moves the dot and checks collision
-//		void move( SDL_Rect& square, Circle& circle );
+//		//Moves the dot
+//		void move();
 //
 //		//Shows the dot on the screen
 //		void render();
-//
-//		//Gets collision circle
-//		Circle& getCollider();
 //
 //    private:
 //		//The X and Y offsets of the dot
@@ -96,12 +86,6 @@
 //
 //		//The velocity of the dot
 //		int mVelX, mVelY;
-//		
-//		//Dot's collision circle
-//		Circle mCollider;
-//
-//		//Moves the collision circle relative to the dot's offset
-//		void shiftColliders();
 //};
 //
 ////Starts up SDL and creates window
@@ -113,15 +97,6 @@
 ////Frees media and shuts down SDL
 //void close();
 //
-////Circle/Circle collision detector
-//bool checkCollision( Circle& a, Circle& b );
-//
-////Circle/Box collision detector
-//bool checkCollision( Circle& a, SDL_Rect& b );
-//
-////Calculates distance squared between two points
-//double distanceSquared( int x1, int y1, int x2, int y2 );
-//
 ////The window we'll be rendering to
 //SDL_Window* gWindow = NULL;
 //
@@ -130,6 +105,7 @@
 //
 ////Scene textures
 //LTexture gDotTexture;
+//LTexture gBGTexture;
 //
 //LTexture::LTexture()
 //{
@@ -279,21 +255,15 @@
 //	return mHeight;
 //}
 //
-//Dot::Dot( int x, int y )
+//Dot::Dot()
 //{
 //    //Initialize the offsets
-//    mPosX = x;
-//    mPosY = y;
-//
-//	//Set collision circle size
-//	mCollider.r = DOT_WIDTH / 2;
+//    mPosX = 0;
+//    mPosY = 0;
 //
 //    //Initialize the velocity
 //    mVelX = 0;
 //    mVelY = 0;
-//
-//	//Move collider relative to the circle
-//	shiftColliders();
 //}
 //
 //void Dot::handleEvent( SDL_Event& e )
@@ -324,49 +294,33 @@
 //    }
 //}
 //
-//void Dot::move( SDL_Rect& square, Circle& circle )
+//void Dot::move()
 //{
 //    //Move the dot left or right
 //    mPosX += mVelX;
-//	shiftColliders();
 //
-//    //If the dot collided or went too far to the left or right
-//	if( ( mPosX - mCollider.r < 0 ) || ( mPosX + mCollider.r > SCREEN_WIDTH ) || checkCollision( mCollider, square ) || checkCollision( mCollider, circle ) )
+//    //If the dot went too far to the left or right
+//    if( ( mPosX < 0 ) || ( mPosX + DOT_WIDTH > SCREEN_WIDTH ) )
 //    {
 //        //Move back
 //        mPosX -= mVelX;
-//		shiftColliders();
 //    }
 //
 //    //Move the dot up or down
 //    mPosY += mVelY;
-//	shiftColliders();
 //
-//    //If the dot collided or went too far up or down
-//    if( ( mPosY - mCollider.r < 0 ) || ( mPosY + mCollider.r > SCREEN_HEIGHT ) || checkCollision( mCollider, square ) || checkCollision( mCollider, circle ) )
+//    //If the dot went too far up or down
+//    if( ( mPosY < 0 ) || ( mPosY + DOT_HEIGHT > SCREEN_HEIGHT ) )
 //    {
 //        //Move back
 //        mPosY -= mVelY;
-//		shiftColliders();
 //    }
 //}
 //
 //void Dot::render()
 //{
 //    //Show the dot
-//	gDotTexture.render( mPosX - mCollider.r, mPosY - mCollider.r );
-//}
-//
-//Circle& Dot::getCollider()
-//{
-//	return mCollider;
-//}
-//
-//void Dot::shiftColliders()
-//{
-//	//Align collider to center of dot
-//	mCollider.x = mPosX;
-//	mCollider.y = mPosY;
+//	gDotTexture.render( mPosX, mPosY );
 //}
 //
 //bool init()
@@ -429,9 +383,16 @@
 //	bool success = true;
 //
 //	//Load dot texture
-//	if( !gDotTexture.loadFromFile( "Resources/Images/SDL Tutorial 29/dot.bmp" ) )
+//	if( !gDotTexture.loadFromFile( "Resources/Images/SDL Tutorial 31/dot.bmp" ) )
 //	{
 //		printf( "Failed to load dot texture!\n" );
+//		success = false;
+//	}
+//
+//	//Load background texture
+//	if( !gBGTexture.loadFromFile( "Resources/Images/SDL Tutorial 31/bg.png" ) )
+//	{
+//		printf( "Failed to load background texture!\n" );
 //		success = false;
 //	}
 //
@@ -442,6 +403,7 @@
 //{
 //	//Free loaded images
 //	gDotTexture.free();
+//	gBGTexture.free();
 //
 //	//Destroy window	
 //	SDL_DestroyRenderer( gRenderer );
@@ -452,74 +414,6 @@
 //	//Quit SDL subsystems
 //	IMG_Quit();
 //	SDL_Quit();
-//}
-//
-//bool checkCollision( Circle& a, Circle& b )
-//{
-//	//Calculate total radius squared
-//	int totalRadiusSquared = a.r + b.r;
-//	totalRadiusSquared = totalRadiusSquared * totalRadiusSquared;
-//
-//    //If the distance between the centers of the circles is less than the sum of their radii
-//    if( distanceSquared( a.x, a.y, b.x, b.y ) < ( totalRadiusSquared ) )
-//    {
-//        //The circles have collided
-//        return true;
-//    }
-//
-//    //If not
-//    return false;
-//}
-//
-//bool checkCollision( Circle& a, SDL_Rect& b )
-//{
-//    //Closest point on collision box
-//    int cX, cY;
-//
-//    //Find closest x offset
-//    if( a.x < b.x )
-//    {
-//        cX = b.x;
-//    }
-//    else if( a.x > b.x + b.w )
-//    {
-//        cX = b.x + b.w;
-//    }
-//    else
-//    {
-//        cX = a.x;
-//    }
-//
-//    //Find closest y offset
-//    if( a.y < b.y )
-//    {
-//        cY = b.y;
-//    }
-//    else if( a.y > b.y + b.h )
-//    {
-//        cY = b.y + b.h;
-//    }
-//    else
-//    {
-//        cY = a.y;
-//    }
-//
-//    //If the closest point is inside the circle
-//    if( distanceSquared( a.x, a.y, cX, cY ) < a.r * a.r )
-//    {
-//        //This box and the circle have collided
-//        return true;
-//    }
-//
-//    //If the shapes have not collided
-//    return false;
-//}
-//
-//double distanceSquared( int x1, int y1, int x2, int y2 )
-//{
-//	int deltaX = x2 - x1;
-//	int deltaY = y2 - y1;
-//	return deltaX*deltaX + deltaY*deltaY;
 //}
 //
 //int main( int argc, char* args[] )
@@ -545,16 +439,11 @@
 //			SDL_Event e;
 //
 //			//The dot that will be moving around on the screen
-//			Dot dot( Dot::DOT_WIDTH / 2, Dot::DOT_HEIGHT / 2 );
-//			Dot otherDot( SCREEN_WIDTH / 4, SCREEN_HEIGHT / 4 );
+//			Dot dot;
 //
-//			//Set the wall
-//			SDL_Rect wall;
-//			wall.x = 300;
-//			wall.y = 40;
-//			wall.w = 40;
-//			wall.h = 400;
-//			
+//			//The background scrolling offset
+//			int scrollingOffset = 0;
+//
 //			//While application is running
 //			while( !quit )
 //			{
@@ -571,20 +460,26 @@
 //					dot.handleEvent( e );
 //				}
 //
-//				//Move the dot and check collision
-//				dot.move( wall, otherDot.getCollider() );
+//				//Move the dot
+//				dot.move();
+//
+//				//Scroll background
+//				--scrollingOffset;
+//				if( scrollingOffset < -gBGTexture.getWidth() )
+//				{
+//					scrollingOffset = 0;
+//				}
 //
 //				//Clear screen
 //				SDL_SetRenderDrawColor( gRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
 //				SDL_RenderClear( gRenderer );
 //
-//				//Render wall
-//				SDL_SetRenderDrawColor( gRenderer, 0x00, 0x00, 0x00, 0xFF );		
-//				SDL_RenderDrawRect( gRenderer, &wall );
-//				
-//				//Render dots
+//				//Render background
+//				gBGTexture.render( scrollingOffset, 0 );
+//				gBGTexture.render( scrollingOffset + gBGTexture.getWidth(), 0 );
+//
+//				//Render objects
 //				dot.render();
-//				otherDot.render();
 //
 //				//Update screen
 //				SDL_RenderPresent( gRenderer );
